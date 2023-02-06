@@ -18,8 +18,8 @@
                     font-bold
                     rounded-xl
                 " :href="route(`${routeName}create`)">
-        + Agregar nuevo
-        </Link>
+            + Agregar nuevo
+            </Link>
           <div class="overflow-x-auto relative sm:rounded-lg mt-10 bg-gray-50 shadow-2xl p-8">
             <table v-if="servicios.data.length > 0" class="w-full text-left text-gray-500">
               <thead class="text-gray-700 uppercase">
@@ -47,24 +47,25 @@
                   </td>
                   <td class="px-6 py-4">
                     <Link :href="route('servicios.edit', item.id)" class="no-underline text-black hover:font-bold">
-                    {{ item.precio }}
+                    ${{ item.precio }}
                     </Link>
                   </td>
                   <td class="px-6 py-4">
                     <Link :href="route('servicios.edit', item.id)" class="no-underline text-black hover:font-bold">
                     <!-- {{ item.imagen }} -->
                     <img v-bind:src="('storage/Imagenes/'+item.imagen)" width="120">
+
                     </Link>
                   </td>
                   <td class="px-6 py-4">
                     <Link :href="route('servicios.edit', item.id)" class="text-blue-500 hover:text-blue-600">
-                    <svg class="h-8 w-8 text-black" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path stroke="none" d="M0 0h24v24H0z" />
-                      <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
-                      <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
-                      <line x1="16" y1="5" x2="19" y2="8" />
-                    </svg>
+                      <svg class="h-8 w-8 text-black  ml-10" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" />
+                        <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                        <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                        <line x1="16" y1="5" x2="19" y2="8" />
+                      </svg>
                     </Link>
   
                   </td>

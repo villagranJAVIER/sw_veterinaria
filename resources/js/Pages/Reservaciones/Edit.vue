@@ -8,8 +8,8 @@
         <div class="py-12">
             <div class="max-w-screen-2xl mx-auto sm:px-6 lg:px-8 text-left text-2xl">
 
-                <div class="bg-gray-50 shadow-2xl p-8">
-                    <form class="p-10 flex flex-col items-center" @submit.prevent="guardar">
+                <div class="bg-gray-50 shadow-2xl p-8 m-auto flex items-center">
+                    <form class="p-10 items-center flex flex-col bg-slate-50 w-1/2" @submit.prevent="guardar">
 
                         <jet-label for="nombre_c" value="Nombre del usuario:" />
                         <jet-input id="nombre_c" class="px-5 py-3 w-3/4 border border-gray-600 rounded"
@@ -68,6 +68,23 @@
                         </div>
 
                     </form>
+                    <div class="bg-slate-50 w-1/2 p-14">
+                        <div class="mb-7">
+                            <img v-bind:src="('/storage/Imagenes/' + servicio.imagen)" width="800"
+                                class="border-2 rounded-lg">
+                        </div>
+                        <div class="flex flex-col">
+                            <jet-label value="Servicio solicitado:" />
+                            <span id="service_id"
+                                class="px-5 py-3 w-3/4 border border-gray-600 rounded mb-3 bg-slate-200">
+                                {{ servicio.nombre }}
+                            </span>
+                            <jet-label value="Precio del servicio:" class="" />
+                            <span id="service_id" class="px-5 py-3 w-3/4 border border-gray-600 rounded bg-slate-200">
+                                ${{ servicio.precio }}
+                            </span>
+                        </div>
+                    </div>
                 </div>
 
             </div>

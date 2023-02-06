@@ -24,6 +24,7 @@ const switchToTeam = (team) => {
 };
 
 const logout = () => {
+    location.reload();
     Inertia.post(route('logout'));
 };
 </script>
@@ -53,7 +54,7 @@ const logout = () => {
                                     Inicio
                                 </NavLink>
                                 <NavLink :href="route('reservaciones.index')" :active="route().current('reservaciones.index')">
-                                    Reservaciones
+                                    Citas
                                 </NavLink>
                             </div>
                         </div>
@@ -154,7 +155,7 @@ const logout = () => {
 
                                         <!-- Authentication -->
                                         <form @submit.prevent="logout">
-                                            <DropdownLink as="button">
+                                            <DropdownLink as="button" >
                                                 Cerrar sesión
                                             </DropdownLink>
                                         </form>
@@ -196,7 +197,7 @@ const logout = () => {
                 <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                            Dashboard
+                            Inicio
                         </ResponsiveNavLink>
                     </div>
 
@@ -219,7 +220,7 @@ const logout = () => {
 
                         <div class="mt-3 space-y-1">
                             <ResponsiveNavLink :href="route('profile.show')" :active="route().current('profile.show')">
-                                Profile
+                                Perfil
                             </ResponsiveNavLink>
 
                             <ResponsiveNavLink v-if="$page.props.jetstream.hasApiFeatures" :href="route('api-tokens.index')" :active="route().current('api-tokens.index')">
@@ -229,7 +230,7 @@ const logout = () => {
                             <!-- Authentication -->
                             <form method="POST" @submit.prevent="logout">
                                 <ResponsiveNavLink as="button">
-                                    Log Out
+                                    Cerrar sesión
                                 </ResponsiveNavLink>
                             </form>
 

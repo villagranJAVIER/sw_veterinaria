@@ -19,18 +19,18 @@
                                 <th class="px-6 py-3 border-r bg-gray-300">
                                     Nombre mascota
                                 </th>
-                                <th class="px-6 py-3 border-r bg-gray-300">
+                                <!-- <th class="px-6 py-3 border-r bg-gray-300">
                                     Edad
                                 </th>
                                 <th class="px-6 py-3 border-r bg-gray-300">
                                     Peso
-                                </th>
+                                </th> -->
                                 <th class="px-6 py-3 border-r bg-gray-300">
                                     Raza
                                 </th>
-                                <th class="px-6 py-3 border-r bg-gray-300">
+                                <!-- <th class="px-6 py-3 border-r bg-gray-300">
                                     Servicio
-                                </th>
+                                </th> -->
                                 <th class="px-6 py-3 border-r bg-gray-300">
                                     Acciones
                                 </th>
@@ -50,7 +50,7 @@
                                     {{ item.nombre_a }}
                                     </Link>
                                 </td>
-                                <td class="px-6 py-4">
+                                <!-- <td class="px-6 py-4">
                                     <Link :href="route('reservaciones.edit', item.id)"
                                         class="no-underline text-black hover:font-bold">
                                     {{ item.edad_a }}
@@ -61,30 +61,30 @@
                                         class="no-underline text-black hover:font-bold">
                                     {{ item.peso_a }}
                                     </Link>
-                                </td>
+                                </td> -->
                                 <td class="px-6 py-4">
                                     <Link :href="route('reservaciones.edit', item.id)"
                                         class="no-underline text-black hover:font-bold">
                                     {{ item.raza_a }}
                                     </Link>
                                 </td>
-                                <td class="px-6 py-4">
+                                <!-- <td class="px-6 py-4">
                                     <Link :href="route('reservaciones.edit', item.id)"
                                         class="no-underline text-black hover:font-bold">
                                     {{ item.service_id }}
                                     </Link>
-                                </td>
+                                </td> -->
                                 <td class="px-6 py-4">
                                     <Link :href="route('reservaciones.edit', item.id)"
                                         class="text-blue-500 hover:text-blue-600">
-                                    <svg class="h-8 w-8 text-black" viewBox="0 0 24 24" stroke-width="2"
-                                        stroke="currentColor" fill="none" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" />
-                                        <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
-                                        <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
-                                        <line x1="16" y1="5" x2="19" y2="8" />
-                                    </svg>
+                                        <svg class="h-8 w-8 ml-10 text-black" viewBox="0 0 24 24" stroke-width="2"
+                                            stroke="currentColor" fill="none" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" />
+                                            <path d="M9 7 h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3" />
+                                            <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3" />
+                                            <line x1="16" y1="5" x2="19" y2="8" />
+                                        </svg>
                                     </Link>
 
                                 </td>

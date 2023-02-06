@@ -38,14 +38,14 @@ class ReservationController extends Controller
         if($user['tipo']==1){
             return Inertia::render("{$this->source}Index", [
                 'reservaciones'        =>  Reservation::all(),
-                'titulo'          => 'Gestion de reservaciones',
+                'titulo'          => 'Gestion de citas',
                 'routeName'      => $this->routeName
             ]);
         }else{
             $reservaciones = $user->reservations;
             return Inertia::render("{$this->source}Index", [
                 'reservaciones'        =>  $reservaciones,
-                'titulo'          => 'Reservaciones',
+                'titulo'          => 'Citas',
                 'routeName'      => $this->routeName
             ]);
         }
@@ -93,7 +93,7 @@ class ReservationController extends Controller
     {
         $servicio = Service::find($id);
         return Inertia::render("{$this->source}Create", [
-            'titulo'          => 'Agregar reservación',
+            'titulo'          => 'Agregar cita',
             'routeName'      => $this->routeName,
             'servicio'  => $servicio,
         ]);
@@ -108,10 +108,13 @@ class ReservationController extends Controller
     public function edit($id)
     {
         $reservacion = Reservation::find($id);
+        $servicio = $reservacion->service_id;
+        $servicio = Service::find($servicio);
         return Inertia::render("{$this->source}Edit", [
-            'titulo'          => 'Editar reservación',
+            'titulo'          => 'Editar cita',
             'routeName'      => $this->routeName,
-            'reservaciones' => $reservacion
+            'reservaciones' => $reservacion,
+            'servicio' => $servicio,
         ]);
     }
 
