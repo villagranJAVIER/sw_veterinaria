@@ -34,14 +34,14 @@ class ReservationController extends Controller
     {
         $id = Auth::id();
         $user = User::find($id);
-        
-        if($user['tipo']==1){
+
+        if ($user['tipo'] == 1) {
             return Inertia::render("{$this->source}Index", [
                 'reservaciones'        =>  Reservation::all(),
                 'titulo'          => 'Gestion de citas',
                 'routeName'      => $this->routeName
             ]);
-        }else{
+        } else {
             $reservaciones = $user->reservations;
             return Inertia::render("{$this->source}Index", [
                 'reservaciones'        =>  $reservaciones,
@@ -49,7 +49,6 @@ class ReservationController extends Controller
                 'routeName'      => $this->routeName
             ]);
         }
-        
     }
 
     /**
@@ -59,7 +58,6 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
@@ -80,7 +78,7 @@ class ReservationController extends Controller
             'service_id' => $request->input('service_id'),
             'user_id' => $id,
         ]);
-        return redirect()->route("dashboard");
+        return redirect()->route("dashboard")->with('message', 'Cita generada con éxito');
     }
 
     /**
@@ -130,7 +128,7 @@ class ReservationController extends Controller
         $id = $request->id;
         $reservacion = Reservation::find($id);
         $reservacion->update($request->validated());
-        return redirect()->route('reservaciones.index');
+        return redirect()->route('reservaciones.index')->with('message', 'Cita actualizada con éxito');
     }
 
     /**
@@ -143,6 +141,6 @@ class ReservationController extends Controller
     {
         $reservacion = Reservation::find($id);
         $reservacion->delete();
-        return redirect()->route('reservaciones.index');
+        return redirect()->route('reservaciones.index')->with('message', 'Cita eliminada con éxito');;
     }
 }

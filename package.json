@@ -21,6 +21,7 @@
         "vue": "^3.2.31"
     },
     "dependencies": {
+        "@smartweb/vue-flash-message": "^0.6.10",
         "sweetalert2": "^11.7.0"
     }
 }

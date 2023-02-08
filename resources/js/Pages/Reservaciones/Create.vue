@@ -62,7 +62,8 @@
                         </div>
                         <div class="flex flex-col">
                             <jet-label value="Servicio solicitado:" />
-                            <span id="service_id" class="px-5 py-3 w-3/4 border border-gray-600 rounded mb-3 bg-slate-200">
+                            <span id="service_id"
+                                class="px-5 py-3 w-3/4 border border-gray-600 rounded mb-3 bg-slate-200">
                                 {{ servicio.nombre }}
                             </span>
                             <jet-label value="Precio del servicio:" class="" />

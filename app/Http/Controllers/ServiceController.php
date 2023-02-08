@@ -58,19 +58,19 @@ class ServiceController extends Controller
      */
     public function store(StoreServiceRequest $request)
     {
-        if($request->hasFile("imagen")){
+        if ($request->hasFile("imagen")) {
             $file = $request->file('imagen');
-            $nombre = $request->input('nombre').'.'.$file->guessExtension();
+            $nombre = $request->input('nombre') . '.' . $file->guessExtension();
             Service::create([
                 'nombre' => $request->input('nombre'),
-                'precio' => $request->input('precio'), 
-                'imagen' => $nombre,                
+                'precio' => $request->input('precio'),
+                'imagen' => $nombre,
                 $file->storeAs('public/Imagenes', $nombre)
             ]);
-        }else{
+        } else {
             Service::create($request->validated());
         }
-        return redirect()->route("servicios.index");
+        return redirect()->route("servicios.index")->with('message', 'Servicio generado con éxito');;
     }
 
     /**
@@ -110,7 +110,7 @@ class ServiceController extends Controller
     public function update(UpdateServiceRequest $request, Service $service)
     {
         $service->update($request->validated());
-        return redirect()->route('servicios.index');
+        return redirect()->route('servicios.index')->with('message', 'Servicio actualizado con éxito');;
     }
 
     /**
@@ -123,25 +123,25 @@ class ServiceController extends Controller
     {
         $service = Service::find($id);
         $service->delete();
-        return redirect()->route('servicios.index');
+        return redirect()->route('servicios.index')->with('message', 'Servicio eliminado con éxito');;
     }
 
     public function upload(Request $request)
     {
         $id = $request->id;
         $service = Service::find($id);
-        
-        if($request->hasFile("imagen")){
+
+        if ($request->hasFile("imagen")) {
             $file = $request->file('imagen');
-            $nombre = $request->input('nombre').'.'.$file->guessExtension();
+            $nombre = $request->input('nombre') . '.' . $file->guessExtension();
             $file->storeAs('public/Imagenes', $nombre);
-            
+
             $requestData = $request->all();
             $requestData['imagen'] = $nombre;
             $service->update($requestData);
-        }else{
+        } else {
             $service->update($request->all());
         }
-        return redirect()->route('servicios.index');
+        return redirect()->route('servicios.index')->with('message', 'Servicio actualizado con éxito');
     }
 }

@@ -109,6 +109,7 @@ export default {
         titulo: { type: String, required: true },
         reservaciones: { type: Object, required: true },
         routeName: { type: String, required: true },
+        servicio: { type: Object, required: true },
     },
     components: {
         AppLayout,
