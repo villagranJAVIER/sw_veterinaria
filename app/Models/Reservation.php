@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model
 {
+    //Atributos de la cita
     use HasFactory;
     protected $fillable = [
         'nombre_c',

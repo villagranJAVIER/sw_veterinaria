@@ -30,6 +30,7 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //Funcion para listar las citas
     public function index()
     {
         $id = Auth::id();
@@ -66,6 +67,7 @@ class ReservationController extends Controller
      * @param  \App\Http\Requests\StoreReservationRequest  $request
      * @return \Illuminate\Http\Response
      */
+    //Funcion para guardar las citas
     public function store(StoreReservationRequest $request)
     {
         $id =  Auth::id();
@@ -87,6 +89,7 @@ class ReservationController extends Controller
      * @param  \App\Models\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
+    //Funcion para mostrar las citas
     public function show($id)
     {
         $servicio = Service::find($id);
@@ -103,6 +106,7 @@ class ReservationController extends Controller
      * @param  \App\Models\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
+    //Funcion para editar las citas
     public function edit($id)
     {
         $reservacion = Reservation::find($id);
@@ -123,6 +127,7 @@ class ReservationController extends Controller
      * @param  \App\Models\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
+    //Funcion para editar las citas (ya lo hace en la bd)
     public function update(UpdateReservationRequest $request)
     {
         $id = $request->id;
@@ -137,6 +142,7 @@ class ReservationController extends Controller
      * @param  \App\Models\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
+    //Funcion para eliminar las citas
     public function destroy($id)
     {
         $reservacion = Reservation::find($id);

@@ -82,7 +82,7 @@ defineProps({
                                 <img v-bind:src="('storage/Imagenes/' + item.imagen)" width="330"
                                     class="border-2 rounded-lg">
                                 <span
-                                    class="absolute -translate-x-2/4 -translate-y-1/2 top-1/2 left-1/2 text-2xl text-white hover:text-3xl hover:text-slate-300">
+                                    class="absolute -translate-x-2/4 -translate-y-1/2 top-1/2 left-1/2 text-2xl font-semibold text-black  hover:text-3xl hover:text-slate-700 bg-slate-100 bg-opacity-20">
                                     {{ item.nombre }}
                                 </span>
                                 </Link>

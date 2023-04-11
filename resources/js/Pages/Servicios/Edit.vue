@@ -90,7 +90,6 @@ export default {
   },
   setup(props) {
     const form = useForm({ ...props.servicios });
-
     const guardar = () => {
       form.post(route("upload", form.id));
     };

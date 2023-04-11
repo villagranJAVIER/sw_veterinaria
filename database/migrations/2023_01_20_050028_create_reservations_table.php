@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('reservations', function (Blueprint $table) {
+            //Migracion de las citas, es el esquema de la tabla citas
             $table->id();
             $table->string("nombre_c");
             $table->string("nombre_a");

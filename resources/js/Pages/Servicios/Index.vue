@@ -113,5 +113,6 @@ export default {
     Input,
     JetButton,
   },
+  
 };
 </script>

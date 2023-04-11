@@ -21,6 +21,7 @@ class StoreReservationRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
+    //Validaciones de los campos para guardar citas
     public function rules()
     {
         return [

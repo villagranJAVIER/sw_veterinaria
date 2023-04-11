@@ -32,8 +32,11 @@ const logout = () => {
 <template>
     <div>
 
-        <Head :title="title" />
-
+        <Head :title="title">
+            <link rel="shortcut icon" type="image/png" href="storage/img/logo.png">
+            <link rel="shortcut icon" sizes="192x192" href="storage/img/logo.png">
+        </Head>
+            
         <Banner />
 
         <div class="min-h-screen bg-gray-100">
@@ -51,8 +54,7 @@ const logout = () => {
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')"
-                                    class="text-xl">
+                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')" class="text-xl">
                                     Inicio
                                 </NavLink>
                                 <NavLink :href="route('reservaciones.index')"
@@ -91,8 +93,7 @@ const logout = () => {
                                                 </div>
 
                                                 <!-- Team Settings -->
-                                                <DropdownLink
-                                                    :href="route('teams.show', $page.props.user.current_team)">
+                                                <DropdownLink :href="route('teams.show', $page.props.user.current_team)">
                                                     Team Settings
                                                 </DropdownLink>
 
@@ -189,14 +190,14 @@ const logout = () => {
                         <div class="-mr-2 flex items-center sm:hidden">
                             <button
                                 class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition"
-                                @click="showingNavigationDropdown = ! showingNavigationDropdown">
+                                @click="showingNavigationDropdown = !showingNavigationDropdown">
                                 <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                     <path
-                                        :class="{'hidden': showingNavigationDropdown, 'inline-flex': ! showingNavigationDropdown }"
+                                        :class="{ 'hidden': showingNavigationDropdown, 'inline-flex': !showingNavigationDropdown }"
                                         stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M4 6h16M4 12h16M4 18h16" />
                                     <path
-                                        :class="{'hidden': ! showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }"
+                                        :class="{ 'hidden': !showingNavigationDropdown, 'inline-flex': showingNavigationDropdown }"
                                         stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M6 18L18 6M6 6l12 12" />
                                 </svg>
@@ -206,20 +207,24 @@ const logout = () => {
                 </div>
 
                 <!-- Responsive Navigation Menu -->
-                <div :class="{'block': showingNavigationDropdown, 'hidden': ! showingNavigationDropdown}"
-                    class="sm:hidden">
+                <div :class="{ 'block': showingNavigationDropdown, 'hidden': !showingNavigationDropdown }" class="sm:hidden">
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                             Inicio
                         </ResponsiveNavLink>
                     </div>
-
+                    
+                    <div class="pt-2 pb-3 space-y-1">
+                        <ResponsiveNavLink :href="route('reservaciones.index')" :active="route().current('reservaciones.index')">
+                            Citas
+                        </ResponsiveNavLink>
+                    </div>
                     <!-- Responsive Settings Options -->
                     <div class="pt-4 pb-1 border-t border-gray-200">
                         <div class="flex items-center px-4">
                             <div v-if="$page.props.jetstream.managesProfilePhotos" class="shrink-0 mr-3">
-                                <img class="h-10 w-10 rounded-full object-cover"
-                                    :src="$page.props.user.profile_photo_url" :alt="$page.props.user.name">
+                                <img class="h-10 w-10 rounded-full object-cover" :src="$page.props.user.profile_photo_url"
+                                    :alt="$page.props.user.name">
                             </div>
 
                             <div>
@@ -237,8 +242,8 @@ const logout = () => {
                                 Perfil
                             </ResponsiveNavLink>
 
-                            <ResponsiveNavLink v-if="$page.props.jetstream.hasApiFeatures"
-                                :href="route('api-tokens.index')" :active="route().current('api-tokens.index')">
+                            <ResponsiveNavLink v-if="$page.props.jetstream.hasApiFeatures" :href="route('api-tokens.index')"
+                                :active="route().current('api-tokens.index')">
                                 API Tokens
                             </ResponsiveNavLink>
 
@@ -263,8 +268,8 @@ const logout = () => {
                                     Team Settings
                                 </ResponsiveNavLink>
 
-                                <ResponsiveNavLink v-if="$page.props.jetstream.canCreateTeams"
-                                    :href="route('teams.create')" :active="route().current('teams.create')">
+                                <ResponsiveNavLink v-if="$page.props.jetstream.canCreateTeams" :href="route('teams.create')"
+                                    :active="route().current('teams.create')">
                                     Create New Team
                                 </ResponsiveNavLink>
 
@@ -280,9 +285,9 @@ const logout = () => {
                                         <ResponsiveNavLink as="button">
                                             <div class="flex items-center">
                                                 <svg v-if="team.id == $page.props.user.current_team_id"
-                                                    class="mr-2 h-5 w-5 text-green-400"
-                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="currentColor">
+                                                    class="mr-2 h-5 w-5 text-green-400" xmlns="http://www.w3.org/2000/svg"
+                                                    fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                                    stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                                 </svg>

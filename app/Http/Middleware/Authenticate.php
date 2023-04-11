@@ -12,6 +12,7 @@ class Authenticate extends Middleware
      * @param  \Illuminate\Http\Request  $request
      * @return string|null
      */
+    //Middleware para evaluar si el usuario es cliente
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {

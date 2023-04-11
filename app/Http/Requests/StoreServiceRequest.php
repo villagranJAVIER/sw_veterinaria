@@ -21,11 +21,12 @@ class StoreServiceRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
+    //Validaciones de los campos para guardar servicios
     public function rules()
     {
         return [
             'nombre' => 'required|max:255|unique:Services',
-            'precio' => 'required',
+            'precio' => 'required|numeric',
             'imagen' => ['mimes:jpg,png,bmp,gif,tif,jpeg'],
         ];
     }

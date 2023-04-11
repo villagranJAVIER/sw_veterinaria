@@ -28,6 +28,7 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //Funcion para listar los servicios
     public function index()
     {
         return Inertia::render("{$this->source}Index", [
@@ -42,6 +43,7 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //Funcion para crear los servicios
     public function create()
     {
         return Inertia::render("{$this->source}Create", [
@@ -56,6 +58,7 @@ class ServiceController extends Controller
      * @param  \App\Http\Requests\StoreServiceRequest  $request
      * @return \Illuminate\Http\Response
      */
+    //Funcion para guardar los servicios (para la bd)
     public function store(StoreServiceRequest $request)
     {
         if ($request->hasFile("imagen")) {
@@ -90,6 +93,7 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
+    //Funcion para editar los servicios
     public function edit($id)
     {
         $service = Service::find($id);
@@ -107,6 +111,7 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
+    //Funcion para editar los servicios (en la db)
     public function update(UpdateServiceRequest $request, Service $service)
     {
         $service->update($request->validated());
@@ -119,14 +124,15 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
+    //Funcion para eliminar los servicios
     public function destroy($id)
     {
         $service = Service::find($id);
         $service->delete();
         return redirect()->route('servicios.index')->with('message', 'Servicio eliminado con éxito');;
     }
-
-    public function upload(Request $request)
+    //Funcion para subir los servicios, sube la imagen al storage
+    public function upload(UpdateServiceRequest $request)
     {
         $id = $request->id;
         $service = Service::find($id);

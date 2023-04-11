@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
+    //Atributos del servicio
     use HasFactory;
     protected $fillable = [
         'nombre',

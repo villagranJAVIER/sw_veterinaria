@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('services', function (Blueprint $table) {
+            //Migracion de los servicios, es el esquema de la tabla servicios
             $table->id();
             $table->string("nombre");
             $table->double("precio");

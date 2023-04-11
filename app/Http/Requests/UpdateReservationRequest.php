@@ -21,6 +21,7 @@ class UpdateReservationRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
+    //Validaciones de los campos para actualizar citas
     public function rules()
     {
         return [
