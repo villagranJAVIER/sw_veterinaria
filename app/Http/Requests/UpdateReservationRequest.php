@@ -30,8 +30,9 @@ class UpdateReservationRequest extends FormRequest
             'edad_a' => 'required|numeric',
             'peso_a' => 'required|numeric',
             'raza_a' => 'required|max:255',
-            'service_id' => 'required',
             //'user_id' => 'required',
+            'service_id' => 'required',
+            
         ];
     }
 
@@ -43,8 +44,9 @@ class UpdateReservationRequest extends FormRequest
             'edad_a' => 'edad de mascota',
             'peso_a' => 'peso de mascota',
             'raza_a' => 'raza de mascota',
-            'service_id' => 'ID servicio',
             //'user_id' => 'ID usuario',
+            'service_id' => 'ID servicio',
+            
         ];
     }
 }

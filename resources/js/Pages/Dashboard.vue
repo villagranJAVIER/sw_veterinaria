@@ -10,7 +10,7 @@ defineProps({
 </script>
 
 <template>
-    <app-layout title="Home">
+    <app-layout title="Inicio">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Menú principal
@@ -68,7 +68,7 @@ defineProps({
 
                         </div>
                     </div>
-                    <div v-else class="p-5 w-4/5 m-auto">
+                    <div v-else class="p-5 w-4/5 m-auto" id="servicios_disponibles">
                         <h2
                             class="font-semibold text-xl text-gray-800 leading-tight text-center border-b-2 border-sky-700 mt-10">
                             Servicios disponibles

@@ -9,13 +9,26 @@
             <div class="max-w-screen-2xl mx-auto sm:px-6 lg:px-8 text-right">
 
                 <div v-if="$page.props.flash.message"
-                    class="flex items-center bg-blue-500 text-white text-sm font-bold px-4 py-3" role="alert">
+                    class="flex items-center bg-blue-500 text-white text-sm font-bold px-4 py-3 mb-10" role="alert">
                     <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                         <path
                             d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z" />
                     </svg>
                     <p>{{ $page.props.flash.message }}</p>
                 </div>
+                
+                <Link class="
+                  p-3
+                  border-2
+                  border-blue-500
+                  text-blue-500
+                  bg-blue-100
+                  hover:bg-blue-200
+                  font-bold
+                  rounded-xl
+                    " :href="route('dashboard') + '#servicios_disponibles'">
+                    + Crear cita
+                </Link>
                 <div class="overflow-x-auto relative sm:rounded-lg mt-10 bg-gray-50 shadow-2xl p-8">
                     <table v-if="reservaciones.length > 0" class="w-full text-left text-gray-500">
                         <thead class="text-gray-700 uppercase">
@@ -28,16 +41,14 @@
                                 </th>
                                 <!-- <th class="px-6 py-3 border-r bg-gray-300">
                                     Edad
-                                </th>
-                                <th class="px-6 py-3 border-r bg-gray-300">
-                                    Peso
                                 </th> -->
+                                
                                 <th class="px-6 py-3 border-r bg-gray-300">
                                     Raza
                                 </th>
-                                <!-- <th class="px-6 py-3 border-r bg-gray-300">
+                                <th class="px-6 py-3 border-r bg-gray-300">
                                     Servicio
-                                </th> -->
+                                </th>
                                 <th class="px-6 py-3 border-r bg-gray-300">
                                     Acciones
                                 </th>
@@ -48,13 +59,13 @@
                                 <td class="px-6 py-4">
                                     <Link :href="route('reservaciones.edit', item.id)"
                                         class="no-underline text-black hover:font-bold">
-                                    {{ item.nombre_c }}
+                                    {{ item.user.name }}
                                     </Link>
                                 </td>
                                 <td class="px-6 py-4">
                                     <Link :href="route('reservaciones.edit', item.id)"
                                         class="no-underline text-black hover:font-bold">
-                                    {{ item.nombre_a }}
+                                    {{ item.nombre }}
                                     </Link>
                                 </td>
                                 <!-- <td class="px-6 py-4">
@@ -62,25 +73,20 @@
                                         class="no-underline text-black hover:font-bold">
                                     {{ item.edad_a }}
                                     </Link>
+                                </td> -->
+                                
+                                <td class="px-6 py-4">
+                                    <Link :href="route('reservaciones.edit', item.id)"
+                                        class="no-underline text-black hover:font-bold">
+                                    {{ item.raza }}
+                                    </Link>
                                 </td>
                                 <td class="px-6 py-4">
                                     <Link :href="route('reservaciones.edit', item.id)"
                                         class="no-underline text-black hover:font-bold">
-                                    {{ item.peso_a }}
-                                    </Link>
-                                </td> -->
-                                <td class="px-6 py-4">
-                                    <Link :href="route('reservaciones.edit', item.id)"
-                                        class="no-underline text-black hover:font-bold">
-                                    {{ item.raza_a }}
+                                    {{ item.service.nombre }}
                                     </Link>
                                 </td>
-                                <!-- <td class="px-6 py-4">
-                                    <Link :href="route('reservaciones.edit', item.id)"
-                                        class="no-underline text-black hover:font-bold">
-                                    {{ item.service_id }}
-                                    </Link>
-                                </td> -->
                                 <td class="px-6 py-4">
                                     <Link :href="route('reservaciones.edit', item.id)"
                                         class="text-blue-500 hover:text-blue-600">
@@ -124,7 +130,7 @@ export default {
             default: {},
             required: true,
         },
-        routeName: { type: String, required: true }
+        routeName: { type: String, required: true },
     },
     components: {
         AppLayout,

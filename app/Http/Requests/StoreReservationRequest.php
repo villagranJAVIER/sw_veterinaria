@@ -25,13 +25,13 @@ class StoreReservationRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre_c' => 'required|max:255',
-            'nombre_a' => 'required|max:255',
-            'edad_a' => 'required|numeric',
-            'peso_a' => 'required|numeric',
-            'raza_a' => 'required|max:255',
-            'service_id' => 'required',
+            'nombre' => 'required|max:255',
+            'edad' => 'required|numeric',
+            'peso' => 'required|numeric',
+            'raza' => 'required|max:255',
             //'user_id' => 'required',
+            'service_id' => 'required',
+            
         ];
     }
 
@@ -43,8 +43,9 @@ class StoreReservationRequest extends FormRequest
             'edad_a' => 'edad de mascota',
             'peso_a' => 'peso de mascota',
             'raza_a' => 'raza de mascota',
-            'service_id' => 'ID servicio',
             //'user_id' => 'ID usuario',
+            'service_id' => 'ID servicio',
+            
         ];
     }
 }

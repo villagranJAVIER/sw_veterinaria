@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClienteMiddleware
 {
@@ -20,5 +21,14 @@ class ClienteMiddleware
             return $next($request);
         }
         return redirect('/dashboard');
+
+        // $reservacionId = $request->route('reservaciones');
+
+        // // Verificar si el usuario está autenticado y si la reservación le pertenece
+        // if (Auth::user()->reservations->contains('id', $reservacionId) || auth()->user()->tipo==1) {
+        //     return $next($request);
+        // }
+
+        // return redirect('/dashboard');
     }
 }

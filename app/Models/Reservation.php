@@ -10,21 +10,20 @@ class Reservation extends Model
     //Atributos de la cita
     use HasFactory;
     protected $fillable = [
-        'nombre_c',
-        'nombre_a',
-        'edad_a',
-        'peso_a',
-        'raza_a',
+        'nombre',
+        'edad',
+        'peso',
+        'raza',
+        'user_id',
         'service_id',
-        'user_id'
     ];
     
     //Relacion 1 a muchos INVERSA
-    public function services(){
+    public function service(){
         return $this->belongsTo(Service::class);
     }
 
-    public function users(){
+    public function user(){
         return $this->belongsTo(User::class);
     }
 }

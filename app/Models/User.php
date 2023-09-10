@@ -64,6 +64,12 @@ class User extends Authenticatable
     //Relacion 1 a 1 con reservaciones
     public function reservations(){
         return $this->hasMany(Reservation::class);
-        //return $this->hasOne(Phone::class, 'foreign_key'); SE PONE SOLO SI LA LLAVE FORANEA ES DIFERENTE A reservatio_id
     }
+    // public function reservations()
+    // {
+    //     return $this->belongsTo(Reservation::class);
+    // }
+        //return $this->hasOne(Phone::class, 'foreign_key'); SE PONE SOLO SI LA LLAVE FORANEA ES DIFERENTE A reservatio_id
+    
+    
 }

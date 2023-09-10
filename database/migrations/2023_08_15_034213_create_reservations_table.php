@@ -14,20 +14,18 @@ return new class extends Migration
     public function up()
     {
         Schema::create('reservations', function (Blueprint $table) {
-            //Migracion de las citas, es el esquema de la tabla citas
             $table->id();
-            $table->string("nombre_c");
-            $table->string("nombre_a");
-            $table->integer("edad_a");
-            $table->double("peso_a");
-            $table->string("raza_a");
+            //Migracion de las citas, es el esquema de la tabla citas
+            $table->string("nombre");
+            $table->integer("edad");
+            $table->double("peso");
+            $table->string("raza");
+
+            $table->unsignedBigInteger("user_id")->nullable();
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");
 
             $table->unsignedBigInteger("service_id")->nullable();
             $table->foreign("service_id")->references("id")->on("services")->onDelete("cascade");
-
-            $table->unsignedBigInteger("user_id")->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
-
             $table->timestamps();
         });
     }

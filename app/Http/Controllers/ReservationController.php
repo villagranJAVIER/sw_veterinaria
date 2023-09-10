@@ -35,19 +35,21 @@ class ReservationController extends Controller
     {
         $id = Auth::id();
         $user = User::find($id);
-
-        if ($user['tipo'] == 1) {
+        if ($user->tipo == 1) {
+            //$reservaciones = $user->reservations()->with('service', 'user')->get();
+            $reservaciones = Reservation::with('service', 'user')->get();
             return Inertia::render("{$this->source}Index", [
-                'reservaciones'        =>  Reservation::all(),
+                'reservaciones'        => $reservaciones,
                 'titulo'          => 'Gestion de citas',
                 'routeName'      => $this->routeName
             ]);
         } else {
-            $reservaciones = $user->reservations;
+            //$reservaciones = $user->reservations;
+            $reservaciones = $user->reservations()->with('service', 'user')->get();
             return Inertia::render("{$this->source}Index", [
                 'reservaciones'        =>  $reservaciones,
                 'titulo'          => 'Citas',
-                'routeName'      => $this->routeName
+                'routeName'      => $this->routeName,
             ]);
         }
     }
@@ -72,13 +74,12 @@ class ReservationController extends Controller
     {
         $id =  Auth::id();
         Reservation::create([
-            'nombre_c' => $request->input('nombre_c'),
-            'nombre_a' => $request->input('nombre_a'),
-            'edad_a' => $request->input('edad_a'),
-            'peso_a' => $request->input('peso_a'),
-            'raza_a' => $request->input('raza_a'),
-            'service_id' => $request->input('service_id'),
+            'nombre' => $request->input('nombre'),
+            'edad' => $request->input('edad'),
+            'peso' => $request->input('peso'),
+            'raza' => $request->input('raza'),
             'user_id' => $id,
+            'service_id' => $request->input('service_id'),
         ]);
         return redirect()->route("dashboard")->with('message', 'Cita generada con éxito');
     }
@@ -109,15 +110,26 @@ class ReservationController extends Controller
     //Funcion para editar las citas
     public function edit($id)
     {
+        $id_user = Auth::id();
         $reservacion = Reservation::find($id);
-        $servicio = $reservacion->service_id;
-        $servicio = Service::find($servicio);
-        return Inertia::render("{$this->source}Edit", [
-            'titulo'          => 'Editar cita',
-            'routeName'      => $this->routeName,
-            'reservaciones' => $reservacion,
-            'servicio' => $servicio,
-        ]);
+        $tipo_user = User::find($id_user);
+        if ($reservacion) { // Verifica si la reserva existe
+            //if($reservacion['user_id'] == $id_user)
+            if ($reservacion->user_id == $id_user || $tipo_user->tipo==1) { // Verifica si el usuario autenticado es el propietario
+                $servicio = Service::find($reservacion->service_id);
+
+                return Inertia::render("{$this->source}Edit", [
+                    'titulo' => 'Editar cita',
+                    'routeName' => $this->routeName,
+                    'reservaciones' => $reservacion,
+                    'servicio' => $servicio,
+                ]);
+            } else {
+                return redirect()->route('reservaciones.index')->with('message', 'Cita prohibida');
+            }
+        } else {
+            return redirect()->route('reservaciones.index')->with('message', 'La Cita no existe');
+        }
     }
 
     /**

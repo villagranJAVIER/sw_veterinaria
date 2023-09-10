@@ -92,6 +92,7 @@ export default {
     const form = useForm({ ...props.servicios });
     const guardar = () => {
       form.post(route("upload", form.id));
+      
     };
 
     const eliminar = () => {
