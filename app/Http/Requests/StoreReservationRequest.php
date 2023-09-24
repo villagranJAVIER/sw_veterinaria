@@ -38,11 +38,10 @@ class StoreReservationRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'nombre_c' => 'nombre de cliente',
-            'nombre_a' => 'nombre de mascota',
-            'edad_a' => 'edad de mascota',
-            'peso_a' => 'peso de mascota',
-            'raza_a' => 'raza de mascota',
+            'nombre' => 'nombre de mascota',
+            'edad' => 'edad de mascota',
+            'peso' => 'peso de mascota',
+            'raza' => 'raza de mascota',
             //'user_id' => 'ID usuario',
             'service_id' => 'ID servicio',
             

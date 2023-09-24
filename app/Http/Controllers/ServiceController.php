@@ -97,11 +97,14 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $service = Service::find($id);
-        return Inertia::render("{$this->source}Edit", [
-            'titulo'          => 'Editar servicios',
-            'routeName'      => $this->routeName,
-            'servicios' => $service
-        ]);
+        if($service){
+            return Inertia::render("{$this->source}Edit", [
+                'titulo'          => 'Editar servicios',
+                'routeName'      => $this->routeName,
+                'servicios' => $service
+            ]);
+        }
+        return redirect()->route('servicios.index')->with('message', 'El servicio no existe|');
     }
 
     /**
@@ -115,7 +118,7 @@ class ServiceController extends Controller
     public function update(UpdateServiceRequest $request, Service $service)
     {
         $service->update($request->validated());
-        return redirect()->route('servicios.index')->with('message', 'Servicio actualizado con éxito');;
+        return redirect()->route('servicios.index')->with('message', 'Servicio actualizado con éxito');
     }
 
     /**

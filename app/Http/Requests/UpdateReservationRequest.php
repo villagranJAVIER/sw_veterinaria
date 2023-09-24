@@ -25,11 +25,10 @@ class UpdateReservationRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre_c' => 'required|max:255',
-            'nombre_a' => 'required|max:255',
-            'edad_a' => 'required|numeric',
-            'peso_a' => 'required|numeric',
-            'raza_a' => 'required|max:255',
+            'nombre' => 'required|max:255',
+            'edad' => 'required|numeric',
+            'peso' => 'required|numeric',
+            'raza' => 'required|max:255',
             //'user_id' => 'required',
             'service_id' => 'required',
             
@@ -39,11 +38,10 @@ class UpdateReservationRequest extends FormRequest
     public function attributes(): array
     {
         return [
-            'nombre_c' => 'nombre de cliente',
-            'nombre_a' => 'nombre de mascota',
-            'edad_a' => 'edad de mascota',
-            'peso_a' => 'peso de mascota',
-            'raza_a' => 'raza de mascota',
+            'nombre' => 'nombre de mascota',
+            'edad' => 'edad de mascota',
+            'peso' => 'peso de mascota',
+            'raza' => 'raza de mascota',
             //'user_id' => 'ID usuario',
             'service_id' => 'ID servicio',
             

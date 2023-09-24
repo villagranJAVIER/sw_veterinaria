@@ -94,11 +94,14 @@ class ReservationController extends Controller
     public function show($id)
     {
         $servicio = Service::find($id);
-        return Inertia::render("{$this->source}Create", [
-            'titulo'          => 'Agregar cita',
-            'routeName'      => $this->routeName,
-            'servicio'  => $servicio,
-        ]);
+        if($servicio){
+            return Inertia::render("{$this->source}Create", [
+                'titulo'          => 'Agregar cita',
+                'routeName'      => $this->routeName,
+                'servicio'  => $servicio,
+            ]);
+        }
+        return redirect()->route('dashboard')->with('message', 'El servicio no existe');
     }
 
     /**
