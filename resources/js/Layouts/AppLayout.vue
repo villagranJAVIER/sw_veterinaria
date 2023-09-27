@@ -40,7 +40,7 @@ const logout = () => {
         <Banner />
 
         <div class="min-h-screen bg-gray-100">
-            <nav class="bg-cyan-100 border-b border-gray-100 shadow">
+            <nav class="border-b border-gray-100 shadow" style="background-color: #3DC1A8;">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4">
                     <div class="flex justify-between h-18">
@@ -54,11 +54,11 @@ const logout = () => {
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')" class="text-xl">
+                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')" class="text-xl font-bold">
                                     Inicio
                                 </NavLink>
                                 <NavLink :href="route('reservaciones.index')"
-                                    :active="route().current('reservaciones.index')" class="text-xl">
+                                    :active="route().current('reservaciones.index')" class="text-xl font-bold">
                                     Citas
                                 </NavLink>
                             </div>
