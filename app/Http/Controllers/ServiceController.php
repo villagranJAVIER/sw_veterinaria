@@ -6,6 +6,7 @@ use App\Models\Service;
 use App\Http\Requests\StoreServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class ServiceController extends Controller
@@ -97,7 +98,7 @@ class ServiceController extends Controller
     public function edit($id)
     {
         $service = Service::find($id);
-        if($service){
+        if ($service) {
             return Inertia::render("{$this->source}Edit", [
                 'titulo'          => 'Editar servicios',
                 'routeName'      => $this->routeName,
@@ -131,9 +132,29 @@ class ServiceController extends Controller
     public function destroy($id)
     {
         $service = Service::find($id);
-        $service->delete();
-        return redirect()->route('servicios.index')->with('message', 'Servicio eliminado con éxito');;
+
+        if ($service) {
+            // Ruta completa de la imagen a eliminar
+            $filePath = 'public/Imagenes/' . $service->imagen;
+
+            // Intenta eliminar la imagen
+            try {
+                Storage::delete($filePath);
+            } catch (\Exception $e) {
+                // Manejo de errores si la eliminación de la imagen falla
+                return redirect()->route('servicios.index')->with('error', 'No se pudo eliminar la imagen.');
+            }
+
+            // Elimina el registro de servicio
+            $service->delete();
+
+            return redirect()->route('servicios.index')->with('message', 'Servicio eliminado con éxito');
+        } else {
+            // Manejo de errores si no se encuentra el servicio
+            return redirect()->route('servicios.index')->with('error', 'Servicio no encontrado.');
+        }
     }
+
     //Funcion para subir los servicios, sube la imagen al storage
     public function upload(UpdateServiceRequest $request)
     {
